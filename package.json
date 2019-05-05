@@ -2,6 +2,7 @@
   "name": "negotiation_app",
   "version": "0.1.0",
   "private": true,
+  "keywords": ["Vuex", "vue-bootstrap", "vuelidate", "jest"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
