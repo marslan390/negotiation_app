@@ -1,6 +1,6 @@
 <template>
     <b-form @submit="submit">
-        <div role="group" v-if="!submitted">
+        <div role="group" v-if="!model.submitted">
             <label for="employee">Minimum Expected Salary</label>
             <b-form-input
                     id="employee"
@@ -30,11 +30,6 @@
     props: {
       model: EmployeeModel
     },
-    data() {
-      return {
-        submitted: false
-      }
-    },
     validations: {
       model: {
         salary: {
@@ -58,14 +53,20 @@
         return hasValidated
       },
 
+      /** Sets the form submit status */
+      setSubmitted: function(submitted) {
+        const {model} = this;
+        model.submitted = submitted
+      },
+
       /** Triggers when user submit the form */
       submit: function (e) {
-        e.preventDefault()
-        const { validate } = this
+        if(e) e.preventDefault()
+        const { validate, setSubmitted } = this
         if (validate()) {
           // do something
           this.$emit('submit')
-          this.submitted = true
+          setSubmitted(true)
         }
       }
     }

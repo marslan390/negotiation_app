@@ -59,17 +59,22 @@
       /** Validates the form */
       validate: function () {
         const { model: { employer, employee }, $refs } = this
+        let status = true;
         if (!employer.salary) {
           this.tabIndex = 0
           $refs.employer.validate()
-          return false
+          status = false
+        } else {
+          employer.submitted = true
         }
         if (!employee.salary) {
           this.tabIndex = 1
           $refs.employee.validate()
-          return false
+          status = false
+        } else {
+          employee.submitted = true
         }
-        return true
+        return status
       },
 
       /** Sets the status for the dialog */
