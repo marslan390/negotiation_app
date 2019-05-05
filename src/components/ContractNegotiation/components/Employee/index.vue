@@ -1,6 +1,6 @@
 <template>
     <b-form @submit="submit">
-        <div role="group">
+        <div role="group" v-if="!submitted">
             <label for="employee">Minimum Expected Salary</label>
             <b-form-input
                     id="employee"
@@ -29,6 +29,11 @@
   export default {
     props: {
       model: EmployeeModel
+    },
+    data() {
+      return {
+        submitted: false
+      }
     },
     validations: {
       model: {
@@ -60,6 +65,7 @@
         if (validate()) {
           // do something
           this.$emit('submit')
+          this.submitted = true
         }
       }
     }

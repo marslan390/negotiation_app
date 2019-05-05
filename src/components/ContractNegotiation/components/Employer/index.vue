@@ -1,6 +1,6 @@
 <template>
     <b-form @submit="submit">
-        <div role="group">
+        <div role="group" v-if="!submitted">
             <label for="employer">Maximum Offer</label>
             <b-form-input
                     id="employer"
@@ -29,6 +29,11 @@
   export default {
     props: {
       model: EmployerModel
+    },
+    data() {
+      return {
+        submitted: false
+      }
     },
     validations: {
       model: {
@@ -60,6 +65,7 @@
         if (validate()) {
           // do something
           this.$emit('submit')
+          this.submitted = true
         }
       }
     },
