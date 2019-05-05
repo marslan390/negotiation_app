@@ -1,5 +1,7 @@
 # Negotiation App
 
+Check the [Demo](https://marslan390.github.io/negotiation_app/)
+
 ## Project setup
 ```
 yarn install
